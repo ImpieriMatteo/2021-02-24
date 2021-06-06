@@ -9,6 +9,7 @@ import java.util.List;
 import it.polito.tdp.PremierLeague.model.Action;
 import it.polito.tdp.PremierLeague.model.Match;
 import it.polito.tdp.PremierLeague.model.Player;
+import it.polito.tdp.PremierLeague.model.PlayerMatch;
 import it.polito.tdp.PremierLeague.model.Team;
 
 public class PremierLeagueDAO {
@@ -101,6 +102,32 @@ public class PremierLeagueDAO {
 				
 				result.add(match);
 
+			}
+			conn.close();
+			return result;
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return null;
+		}
+	}
+	
+	public List<PlayerMatch> getPlayerPerMatch(Match m) {
+		String sql = "SELECT p.PlayerID, p.Name, (ac.TotalSuccessfulPassesAll + ac.Assists) / ac.TimePlayed AS efficienza, "
+				+ "	ac.TeamID AS teamID "
+				+ "FROM actions ac, players p "
+				+ "WHERE ac.PlayerID = p.PlayerID AND ac.MatchID = ?";
+		List<PlayerMatch> result = new ArrayList<>();
+		Connection conn = DBConnect.getConnection();
+
+		try {
+			PreparedStatement st = conn.prepareStatement(sql);
+			st.setInt(1, m.getMatchID());
+			ResultSet res = st.executeQuery();
+			while (res.next()) {
+
+				PlayerMatch player = new PlayerMatch(res.getInt("PlayerID"), res.getString("Name"), res.getDouble("efficienza"), res.getInt("teamID"));
+				result.add(player);
 			}
 			conn.close();
 			return result;

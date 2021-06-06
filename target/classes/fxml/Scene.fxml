@@ -41,12 +41,12 @@
                         <Insets right="5.0" />
                      </GridPane.margin>
                   </Button>
-                  <Button fx:id="btnGiocatoreMigliore" mnemonicParsing="false" onAction="#doGiocatoreMigliore" prefWidth="200.0" text="Giocatore Migliore" GridPane.columnIndex="2" GridPane.rowIndex="1">
+                  <Button fx:id="btnGiocatoreMigliore" disable="true" mnemonicParsing="false" onAction="#doGiocatoreMigliore" prefWidth="200.0" text="Giocatore Migliore" GridPane.columnIndex="2" GridPane.rowIndex="1">
                      <GridPane.margin>
                         <Insets right="5.0" />
                      </GridPane.margin>
                   </Button>
-                  <Button fx:id="btnSimula" mnemonicParsing="false" onAction="#doSimula" prefWidth="200.0" text="Simula" GridPane.columnIndex="2" GridPane.rowIndex="3">
+                  <Button fx:id="btnSimula" disable="true" mnemonicParsing="false" onAction="#doSimula" prefWidth="200.0" text="Simula" GridPane.columnIndex="2" GridPane.rowIndex="3">
                      <GridPane.margin>
                         <Insets right="5.0" />
                      </GridPane.margin>

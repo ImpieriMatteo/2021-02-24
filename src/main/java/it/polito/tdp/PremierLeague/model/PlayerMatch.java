@@ -1,14 +1,18 @@
 package it.polito.tdp.PremierLeague.model;
 
-public class Player {
-	
+public class PlayerMatch {
+
 	Integer playerID;
 	String name;
+	Double efficienza;
+	Integer teamID;
 	
-	public Player(Integer playerID, String name) {
+	public PlayerMatch(Integer playerID, String name, Double efficienza, Integer teamID) {
 		super();
 		this.playerID = playerID;
 		this.name = name;
+		this.efficienza = efficienza;
+		this.teamID = teamID;
 	}
 	
 	public Integer getPlayerID() {
@@ -22,6 +26,22 @@ public class Player {
 	}
 	public void setName(String name) {
 		this.name = name;
+	}
+
+	public Double getEfficienza() {
+		return efficienza;
+	}
+
+	public void setEfficienza(Double efficienza) {
+		this.efficienza = efficienza;
+	}
+
+	public Integer getTeamID() {
+		return teamID;
+	}
+
+	public void setTeamID(Integer teamID) {
+		this.teamID = teamID;
 	}
 
 	@Override
@@ -40,7 +60,7 @@ public class Player {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Player other = (Player) obj;
+		PlayerMatch other = (PlayerMatch) obj;
 		if (playerID == null) {
 			if (other.playerID != null)
 				return false;
@@ -53,7 +73,6 @@ public class Player {
 	public String toString() {
 		return playerID + " - " + name;
 	}
-	
 	
 	
 }
